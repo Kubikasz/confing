@@ -175,7 +175,8 @@ lvim.plugins = {
   },
   { "JuliaEditorSupport/julia-vim" },
   { 'karb94/neoscroll.nvim' },
-  { "github/copilot.vim" },
+  -- { "github/copilot.vim" },
+  { 'codota/tabnine-nvim', run = "./dl_binaries.sh" },
   { 'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
     config = function()
@@ -229,3 +230,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 lvim.keys.normal_mode["f"] = ":HopWord<CR>"
+require('tabnine').setup({
+  disable_auto_comment = true,
+  accept_keymap = "<Tab>",
+  dismiss_keymap = "<C-]>",
+  debounce_ms = 800,
+  suggestion_color = { gui = "#808080", cterm = 244 },
+  execlude_filetypes = { "TelescopePrompt" }
+})
